@@ -5,6 +5,7 @@ import type { ServicePage, BlogPost as BlogPostType } from '@/types';
 import config from '@/data/config.json';
 import { Container } from '@/components/ui/Container';
 import { TestimonialCard } from '@/components/ui/TestimonialCard';
+import { ContactForm } from '@/components/ContactForm';
 import Image from 'next/image';
 import { Phone, Siren, Award, Clock, ShieldCheck, Key, CheckCircle2, Star, Wrench, Home, Car, Shield, CheckCircle, Cpu, Gauge } from 'lucide-react';
 
@@ -72,7 +73,45 @@ export function DemoHome() {
         </div>
       </div>
 
-      {/* ── 2. Who We Are ─────────────────────────────────────────────── */}
+      {/* ── 2. Service Areas Strip ────────────────────────────────
+      <section className='bg-dark-bg py-10'>
+        <div className='max-w-7xl mx-auto px-4 md:px-6'>
+          <div className='flex flex-col md:flex-row items-center gap-6 md:gap-10'>
+            <div className='flex items-center gap-3 shrink-0'>
+              <div className='w-10 h-10 rounded-full bg-brand-orange/20 flex items-center justify-center'>
+                <Phone className='w-5 h-5 text-brand-orange' />
+              </div>
+              <span className='text-white font-bold text-sm tracking-widest uppercase'>Areas We Cover</span>
+            </div>
+            <div className='h-px md:h-10 w-full md:w-px bg-gray-700 shrink-0' />
+            <div className='flex flex-wrap justify-center md:justify-start gap-3'>
+              {[
+                'Manchester',
+                'Swinton',
+                'Eccles',
+                'Salford',
+                'Worsley',
+                'Walkden',
+                'Urmston',
+                'Stretford',
+                'Irlam',
+                'Leigh',
+                'Wigan',
+                'Pendleton',
+              ].map((area) => (
+                <span
+                  key={area}
+                  className='px-3 py-1.5 bg-white/5 hover:bg-brand-orange/20 border border-white/10 hover:border-brand-orange/40 rounded-full text-gray-300 hover:text-white text-sm font-medium transition-all ease-in-out duration-300 cursor-default'
+                >
+                  {area}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* ── 3. Who We Are ─────────────────────────────────────────────── */}
       <section className='max-w-7xl px-4 md:px-6 mx-auto'>
         <div className='flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch'>
           {/* Image Container */}
@@ -206,6 +245,26 @@ export function DemoHome() {
         </div>
       </section>
 
+      {/* ── 4. Trusted Brands Strip ────────────────────────────────── */}
+      <section className='bg-(--dark-bg) py-16'>
+        <div className='max-w-7xl mx-auto px-4 md:px-6'>
+          <p className='text-center text-xs font-bold uppercase tracking-widest text-gray-500 mb-8'>Approved Installers &amp; Suppliers Of</p>
+          <div className='flex flex-wrap items-center justify-center gap-8 md:gap-16'>
+            {[
+              { src: '/brand-era.png', alt: 'ERA Locks' },
+              { src: '/brand-legge.png', alt: 'Legge Locks' },
+              { src: '/brand-union.png', alt: 'Union Locks' },
+              { src: '/brand-chubb.png', alt: 'Chubb Locks' },
+              { src: '/brand-yale.png', alt: 'Yale Locks' },
+            ].map((brand) => (
+              <div key={brand.alt} className='opacity-100 hover:opacity-50 transition-opacity duration-300 grayscale-0 hover:grayscale'>
+                <Image src={brand.src} alt={brand.alt} width={160} height={60} className='h-16 w-auto object-contain' />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── 4. Services Grid ────────────────────────────────────────── */}
       <section className='max-w-7xl mx-auto px-4 md:px-6'>
         <div className='flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12'>
@@ -248,6 +307,95 @@ export function DemoHome() {
         </div>
       </section>
 
+      {/* ── 5. Service Areas ─────────────────────────────────────────── */}
+      <section className='bg-gray-50'>
+        <div className='max-w-7xl mx-auto px-4 md:px-6'>
+          <div className='text-center mb-12 sm:mb-16'>
+            <div className='flex justify-center items-center gap-3 mb-4'>
+              <span className='h-0.5 w-8 bg-brand-orange rounded-full'></span>
+              <span className='text-brand-orange font-bold tracking-widest uppercase text-sm'>Where We Work</span>
+              <span className='h-0.5 w-8 bg-brand-orange rounded-full'></span>
+            </div>
+            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight'>Service Areas</h2>
+            <p className='text-base sm:text-lg text-gray-500 max-w-2xl mx-auto'>
+              We cover Walkden and the surrounding areas across Greater Manchester, Salford, and Wigan. Click any area below to see the towns we
+              serve.
+            </p>
+          </div>
+
+          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+            {[
+              {
+                region: 'Walkden & Worsley',
+                areas: ['Walkden', 'Worsley', 'Boothstown', 'Mosley Common', 'Roe Green', 'Astley', 'Tyldesley', 'Little Hulton'],
+              },
+              {
+                region: 'Salford & Eccles',
+                areas: ['Eccles', 'Salford', 'Swinton', 'Pendleton', 'Weaste', 'Monton', 'Barton upon Irwell', 'Winton'],
+              },
+              {
+                region: 'Manchester City',
+                areas: ['City Centre', 'Stretford', 'Urmston', 'Flixton', 'Davyhulme', 'Trafford Park', 'Old Trafford', 'Chorlton'],
+              },
+              {
+                region: 'Wigan & Leigh',
+                areas: ['Leigh', 'Atherton', 'Hindley', 'Platt Bridge', 'Golborne', 'Lowton', 'Abram', 'Ince-in-Makerfield'],
+              },
+              {
+                region: 'Bolton',
+                areas: ['Farnworth', 'Kearsley', 'Westhoughton', 'Horwich', 'Harwood', 'Breightmet', 'Tottington', 'Radcliffe'],
+              },
+              {
+                region: 'Irlam & Partington',
+                areas: ['Irlam', 'Cadishead', 'Partington', 'Carrington', 'Sale', 'Altrincham', 'Lymm', 'Warrington'],
+              },
+            ].map((group) => (
+              <details
+                key={group.region}
+                className='group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-brand-orange hover:shadow-xl transition-all ease-in-out duration-500'
+              >
+                <summary className='flex items-center justify-between gap-4 p-6 cursor-pointer list-none select-none'>
+                  <div className='flex items-center gap-4'>
+                    <div className='w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 group-open:bg-brand-orange transition-all ease-in-out duration-500'>
+                      <Key className='w-4 h-4 text-brand-orange group-open:text-white transition-all ease-in-out duration-500' />
+                    </div>
+                    <div>
+                      <p className='text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5'>Locksmith In</p>
+                      <h3 className='text-lg font-bold text-gray-900 group-hover:text-brand-orange group-open:text-brand-orange transition-colors'>
+                        {group.region}
+                      </h3>
+                    </div>
+                  </div>
+                  <span className='w-8 h-8 rounded-full bg-gray-100 group-open:bg-brand-orange flex items-center justify-center shrink-0 transition-all ease-in-out duration-500'>
+                    <svg
+                      className='w-4 h-4 text-gray-600 group-open:text-white group-open:rotate-180 transition-all ease-in-out duration-500'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                      strokeWidth={2.5}
+                    >
+                      <path strokeLinecap='round' strokeLinejoin='round' d='M19 9l-7 7-7-7' />
+                    </svg>
+                  </span>
+                </summary>
+                <div className='px-6 pb-6'>
+                  <div className='border-t border-gray-100 pt-4'>
+                    <ul className='grid grid-cols-2 gap-x-4 gap-y-2'>
+                      {group.areas.map((area) => (
+                        <li key={area} className='flex items-center gap-2 text-sm text-gray-600 font-medium'>
+                          <span className='w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0' />
+                          {area}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── 5. Benefits Grid (Why Choose Us) ────────────────────────── */}
       <section className='bg-white py-16 md:py-24'>
         <div className='max-w-7xl mx-auto px-4 md:px-6'>
@@ -260,7 +408,7 @@ export function DemoHome() {
                 </span>
               </div>
               <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight'>
-                Why Thousands Trust {config.businessName || 'Us'}
+                Why Hunreds Trust {config.businessName || 'Us'}
               </h2>
               <p className='text-base sm:text-lg text-gray-500 mb-10'>
                 We don&apos;t just install locks; we deliver complete peace of mind. Our reputation is built on reliability, transparency, and expert
@@ -287,13 +435,7 @@ export function DemoHome() {
 
             <div className='relative'>
               <div className='absolute -inset-4 bg-dark-bg rounded-3xl -z-10 transform rotate-3' />
-              <Image
-                src='https://www.banham.co.uk/media/catalog/category/locksmith_scams_header.jpg'
-                alt='Locksmith Manchester'
-                height={600}
-                width={600}
-                className='w-full rounded-2xl shadow-xl'
-              />
+              <Image src='/steve.jpeg' alt='Locksmith Manchester' height={600} width={600} className='w-full rounded-2xl shadow-xl' />
             </div>
           </div>
         </div>
@@ -333,9 +475,11 @@ export function DemoHome() {
                   Call {config.phone || 'Us Now'}
                 </button>
               </Link>
-              <button className='cursor-pointer w-full sm:w-auto bg-white text-brand-orange hover:bg-gray-50 rounded-full px-8 py-4 text-lg font-bold transition-all ease-in-out duration-500 shadow-xl'>
-                Request A Call Back
-              </button>
+              <Link href={`mailto:${config.email || ''}?subject=Request%20A%20Callback`}>
+                <button className='cursor-pointer w-full sm:w-auto bg-white text-brand-orange hover:bg-gray-50 rounded-full px-8 py-4 text-lg font-bold transition-all ease-in-out duration-500 shadow-xl'>
+                  Email Us Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -584,36 +728,8 @@ export function ServiceDetail({ service }: { service?: ServicePage }) {
 
               {/* Contact Form MOCK */}
               <div className='bg-white border border-gray-200 p-8 rounded-2xl shadow-sm'>
-                <h3 className='text-xl font-bold mb-6 text-gray-900'>Request a Callback</h3>
-                <form className='space-y-4'>
-                  <div>
-                    <input
-                      type='text'
-                      placeholder='Full Name'
-                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all'
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type='tel'
-                      placeholder='Phone Number'
-                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all'
-                    />
-                  </div>
-                  <div>
-                    <textarea
-                      placeholder='How can we help?'
-                      rows={3}
-                      className='w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all resize-none'
-                    ></textarea>
-                  </div>
-                  <button
-                    type='button'
-                    className='w-full cursor-pointer rounded-xl bg-gray-900 hover:bg-black text-white font-bold h-12 transition-all ease-in-out duration-500'
-                  >
-                    Send Request
-                  </button>
-                </form>
+                <h3 className='text-xl font-bold mb-6 text-gray-900'>Send An Enquiry</h3>
+                <ContactForm email={config.email || 'copaslocksmith@gmail.com'} />
               </div>
 
               {/* Service Benefits */}
